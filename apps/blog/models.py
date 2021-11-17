@@ -24,7 +24,7 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE,
                                  related_name='posts')
     title = models.CharField(max_length=255)
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=255, unique=True)
     intro = models.TextField()
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
