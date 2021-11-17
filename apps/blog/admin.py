@@ -3,6 +3,10 @@ from django.contrib import admin
 from apps.blog.models import Post, Category, Comment
 
 
+class CommentItemInline(admin.ModelAdmin):
+    model = Comment
+    raw_id_fields = ('post',)
+
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'category', 'intro', 'created_at',
@@ -10,6 +14,7 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title', 'intro', 'created_at')
     list_filter = ('category', 'created_at')
+    inlines = (CommentItemInline,)
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
