@@ -1,5 +1,4 @@
 *.pyc
 .idea
 myvenv/
-static/
-staticfiles/
+
