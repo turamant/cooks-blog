@@ -6,6 +6,10 @@ class Category(models.Model):
 
     class Meta:
         ordering = ('title',)
+        verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.title
 
 class Post(models.Model):
     ACTIVE = 'active'
@@ -14,6 +18,8 @@ class Post(models.Model):
         (ACTIVE, 'Active'),
         (DRAFT, 'Draft')
     )
+    category = models.ForeignKey(Category, on_delete=models.CASCADE,
+                                 related_name='posts')
     title = models.CharField(max_length=255)
     slug = models.SlugField()
     intro = models.TextField()
