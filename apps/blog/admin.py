@@ -3,7 +3,7 @@ from django.contrib import admin
 from apps.blog.models import Post, Category, Comment
 
 
-class CommentItemInline(admin.ModelAdmin):
+class CommentItemInline(admin.TabularInline):
     model = Comment
     raw_id_fields = ('post',)
 
