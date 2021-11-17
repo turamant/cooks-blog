@@ -19,6 +19,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'body', 'created_at')
-    search_fields = ('name', 'email', 'body', 'created_at')
-    list_filter = ('name', 'created_at')
+    list_display = ('name', 'post', 'email', 'body', 'created_at')
+    search_fields = ('name', 'post', 'email', 'body', 'created_at')
+    list_filter = ('name', 'post', 'created_at')
+
