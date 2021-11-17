@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 
 from apps.blog.forms import CommentForm
@@ -25,5 +26,7 @@ def category(request, slug):
 
 def search(request):
     query = request.GET.get('query', '')
-    posts = Post.objects.filter(title__icontains=query)
-    return render(request, 'blog/search.html', {'posts': posts})
+
+    posts = Post.objects.filter(status=Post.ACTIVE).filter(Q(title__icontains=query) | Q(intro__icontains=query) | Q(body__icontains=query))
+
+    return render(request, 'blog/search.html', {'posts': posts, 'query': query})
