@@ -4,7 +4,7 @@ from apps.blog.forms import CommentForm
 from apps.blog.models import Post, Category
 
 
-def detail(request, slug):
+def detail(request, category_slug, slug):
     post = get_object_or_404(Post, slug=slug)
 
     if request.method == 'POST':
