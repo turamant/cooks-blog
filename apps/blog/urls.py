@@ -3,5 +3,5 @@ from django.urls import path
 
 
 urlpatterns = [
-    path('', listview_posts, name='listview_post'),
+    path('', listview_post, name='listview_post'),
 ]
