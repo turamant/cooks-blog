@@ -19,9 +19,12 @@ from django.contrib import admin
 
 from django.urls import path, include
 
+from apps.core.views import frontpage, about
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('apps.core.urls')),
-    path('blog/', include('apps.blog.urls')),
+    path('', include('apps.blog.urls')),
+    path('', frontpage, name='frontpage'),
+    path('about/', about, name='about')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
