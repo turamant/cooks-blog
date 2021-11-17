@@ -23,8 +23,8 @@ from apps.core.views import frontpage, about
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('about/', about, name='about'),
     path('', include('apps.blog.urls')),
     path('', frontpage, name='frontpage'),
-    path('about/', about, name='about')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

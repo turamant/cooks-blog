@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from apps.blog.forms import CommentForm
 from apps.blog.models import Post
@@ -10,7 +10,10 @@ def detail(request, slug):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
-            form.save()
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('post_detail', slug=slug)
     else:
         form = CommentForm()
     return render(request, 'blog/detail.html', {'post': post, 'form': form})
