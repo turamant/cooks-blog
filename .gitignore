@@ -1,9 +1,10 @@
 *.pyc
 .idea
 myvenv/
-heroku_settings.py
+heroku*.*
 local_settings.py
-media/
+media
 siteblog
 static
 staticfiles
+migrations
