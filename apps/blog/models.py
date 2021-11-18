@@ -1,5 +1,14 @@
 from django.db import models
 
+class Images(models.Model):
+    post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='images')
+    title = models.CharField(max_length=250)
+    slug = models.SlugField(max_length=250, unique=True)
+    img = models.ImageField(upload_to='images/', blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
 class Category(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField()

@@ -25,6 +25,15 @@
                                 </div>
                             {% endfor %}
                         </div>
+                        <div class="column is-3">
+                            <h3 class="content is-medium">Свежие комментарии</h3>
+                            <ul>
+                            {% for comment in comments %}
+                                <li><strong>{{ comment.name }}: </strong>
+                                        {{ comment.body }}</li>
+                            {% endfor %}
+                                </ul>
+                        </div>
                     </div>
                 </section>
             </div>

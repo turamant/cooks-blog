@@ -12,6 +12,17 @@
                         <img src="{{ post.image.url }}">
                     </figure>
                 {% endif %}
+                <div class="columns">
+                    <div class="column is-8 is-offset-2">
+                        <div class="content is-medium">
+                            {% for image in post.images.all %}
+                            {% if image.img %}
+                               <img src="{{ image.img.url }}" width="245" height="200">
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
 
                 <div class="columns">
                     <div class="column is-8 is-offset-2">

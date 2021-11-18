@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from apps.blog.models import Post, Category, Comment
+from apps.blog.models import Post, Category, Comment, Images
 
 
 class CommentItemInline(admin.TabularInline):
@@ -18,6 +18,12 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    prepopulated_fields = {'slug': ('title',)}
+    search_fields = ('title',)
+
+@admin.register(Images)
+class ImagesAdmin(admin.ModelAdmin):
     list_display = ('title',)
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title',)

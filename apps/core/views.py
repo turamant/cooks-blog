@@ -1,12 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from apps.blog.models import Post
+from apps.blog.models import Post, Comment
 
 
 def frontpage(request):
     posts = Post.objects.filter(status=Post.ACTIVE)
-    return render(request, 'core/frontpage.html', {'posts': posts})
+    comments = Comment.objects.all()
+    return render(request, 'core/frontpage.html', {'posts': posts, 'comments': comments})
 
 def about(request):
     return render(request, 'core/about.html')
